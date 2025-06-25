@@ -41,6 +41,26 @@ void add(Weapon *&head, string name, string category, string price, int stock)
     }
 }
 
+void display(Weapon *head)
+{
+    if (!head)
+    {
+        cout << "Belum ada senjata dalam inventaris.\n";
+        return;
+    }
+
+    cout << "\n=== Daftar Senjata ===\n";
+    int no = 1;
+    while (head)
+    {
+        cout << no++ << ". Nama: " << head->name
+             << " | Kategori: " << head->category
+             << " | Harga: Rp" << head->price
+             << " | Stok: " << head->stock << endl;
+        head = head->next;
+    }
+}
+
 int main()
 {
     Weapon *head = nullptr;
