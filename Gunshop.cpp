@@ -15,13 +15,15 @@ void menu()
 {
     cout << "\n=== GUN SHOP MENU ===\n";
     cout << "1. Tambah senjata\n";
-    cout << "2. Tampilkan semua senjata\n";
+    cout << "2. Tampilkan senjata\n";
     cout << "3. Cari senjata\n";
     cout << "4. Hapus senjata\n";
     cout << "5. Total semua stok\n";
     cout << "6. Hapus semua data\n";
+    cout << "7. Sisipkan senjata setelah senjata tertentu\n";
+    cout << "8. Edit data senjata\n";
     cout << "0. Keluar\n";
-    cout << "Pilih: ";
+    cout << "Pilih No: ";
 }
 
 void add(Weapon *&head, string name, string category, string price, int stock)
@@ -49,15 +51,117 @@ void display(Weapon *head)
         return;
     }
 
-    cout << "\n=== Daftar Senjata ===\n";
-    int no = 1;
-    while (head)
+    int pilihan;
+    cout << "\nTampilkan daftar senjata berdasarkan:\n";
+    cout << "1. Semua senjata\n";
+    cout << "2. Filter (Kategori/Harga/Stok)\n";
+    cout << "Pilih No: ";
+    cin >> pilihan;
+    cin.ignore();
+
+    if (pilihan == 1)
     {
-        cout << no++ << ". Nama: " << head->name
-             << " | Kategori: " << head->category
-             << " | Harga: Rp" << head->price
-             << " | Stok: " << head->stock << endl;
-        head = head->next;
+        cout << "\n=== Daftar Senjata ===\n";
+        int no = 1;
+        Weapon *temp = head;
+        while (temp)
+        {
+            cout << no++ << ". Nama: " << temp->name
+                 << " | Kategori: " << temp->category
+                 << " | Harga: Rp" << temp->price
+                 << " | Stok: " << temp->stock << endl;
+            temp = temp->next;
+        }
+    }
+    else if (pilihan == 2)
+    {
+        int filter;
+        cout << "Filter berdasarkan:\n";
+        cout << "1. Kategori\n";
+        cout << "2. Harga\n";
+        cout << "3. Stok\n";
+        cout << "Pilih No: ";
+        cin >> filter;
+        cin.ignore();
+
+        if (filter == 1)
+        {
+            string kategori;
+            cout << "Masukkan kategori (contoh: Pistol/Rifle/Sniper): ";
+            getline(cin, kategori);
+            int no = 1;
+            Weapon *temp = head;
+            bool found = false;
+            cout << "\n=== Senjata dengan Kategori \"" << kategori << "\" ===\n";
+            while (temp)
+            {
+                if (temp->category == kategori)
+                {
+                    cout << no++ << ". Nama: " << temp->name
+                         << " | Harga: Rp" << temp->price
+                         << " | Stok: " << temp->stock << endl;
+                    found = true;
+                }
+                temp = temp->next;
+            }
+            if (!found)
+                cout << "Tidak ada senjata dengan kategori tersebut.\n";
+        }
+        else if (filter == 2)
+        {
+            string harga;
+            cout << "Masukkan harga (tanpa Rp): ";
+            getline(cin, harga);
+            int no = 1;
+            Weapon *temp = head;
+            bool found = false;
+            cout << "\n=== Senjata dengan Harga Rp" << harga << " ===\n";
+            while (temp)
+            {
+                if (temp->price == harga)
+                {
+                    cout << no++ << ". Nama: " << temp->name
+                         << " | Kategori: " << temp->category
+                         << " | Stok: " << temp->stock << endl;
+                    found = true;
+                }
+                temp = temp->next;
+            }
+            if (!found)
+                cout << "Tidak ada senjata dengan harga tersebut.\n";
+        }
+        else if (filter == 3)
+        {
+            int stok;
+            cout << "Masukkan stok: ";
+            cin >> stok;
+            cin.ignore();
+            int no = 1;
+            Weapon *temp = head;
+            bool found = false;
+            cout << "\n=== Senjata dengan Stok " << stok << " ===\n";
+            while (temp)
+            {
+                if (temp->stock == stok)
+                {
+                    cout << no++ << ". Nama: " << temp->name
+                         << " | Kategori: " << temp->category
+                         << " | Harga: Rp" << temp->price << endl;
+                    found = true;
+                }
+                temp = temp->next;
+            }
+            if (!found)
+                cout << "Tidak ada senjata dengan stok tersebut.\n";
+        }
+        else
+        {
+            cout << "Pilihan filter tidak valid.\n";
+        }
+    }
+    else
+    {
+        cout << "Pilihan tidak valid.\n";
     }
 }
 
@@ -127,12 +231,70 @@ void clearAll(Weapon *&head)
     }
 }
 
+void sisip(Weapon *&head, string after, string name, string kategori, string price, int stock)
+{
+    Weapon *temp = head;
+    while (temp && temp->name != after)
+        temp = temp->next;
+
+    if (!temp)
+    {
+        cout << "Senjata \"" << after << "\" tidak ditemukan. Penyisipan gagal.\n";
+        return;
+    }
+
+    Weapon *newWeapon = new Weapon{name, kategori, price, stock, temp->next};
+    temp->next = newWeapon;
+    cout << "Senjata berhasil disisipkan setelah \"" << after << "\".\n";
+}
+
+void edit(Weapon *head, string name)
+{
+    Weapon *temp = head;
+    while (temp && temp->name != name)
+        temp = temp->next;
+
+    if (!temp)
+    {
+        cout << "Senjata \"" << name << "\" tidak ditemukan.\n";
+        return;
+    }
+
+    cout << "Edit data senjata \"" << name << "\":\n";
+    cout << "Nama baru (kosongkan jika tidak ingin mengubah): ";
+    string newName;
+    getline(cin, newName);
+    if (!newName.empty())
+        temp->name = newName;
+
+    cout << "Kategori baru (contoh: Pistol/Rifle/Sniper | kosongkan jika tidak ingin mengubah): ";
+    string kategori;
+    getline(cin, kategori);
+    if (!kategori.empty())
+        temp->category = kategori;
+
+    cout << "Harga baru (kosongkan jika tidak ingin mengubah): ";
+    string newPrice;
+    getline(cin, newPrice);
+    if (!newPrice.empty())
+        temp->price = newPrice;
+
+    cout << "Stok baru (isi -1 jika tidak ingin mengubah): ";
+    int newStock;
+    cin >> newStock;
+    cin.ignore();
+    if (newStock != -1)
+        temp->stock = newStock;
+
+    cout << "Data senjata berhasil diubah.\n";
+}
+
 int main()
 {
     Weapon *head = nullptr;
 
-        int pilihan;
-    string nama, kategori, harga;
+    int pilihan, stokBaru;
+    string nama, kategori, harga, namaBaru, kategoriBaru, hargaBaru;
     int stok;
 
     do
@@ -176,6 +338,25 @@ int main()
         case 6:
             clearAll(head);
             cout << "Semua senjata berhasil dihapus.\n";
+            break;
+        case 7:
+            cout << "Setelah senjata bernama: ";
+            getline(cin, nama);
+            cout << "Nama senjata baru: ";
+            getline(cin, namaBaru);
+            cout << "Kategori senjata (contoh: Pistol/Rifle/Sniper): ";
+            getline(cin, kategoriBaru);
+            cout << "Harga: Rp";
+            cin >> hargaBaru;
+            cout << "Stok: ";
+            cin >> stokBaru;
+            cin.ignore();
+            sisip(head, nama, namaBaru, kategoriBaru, hargaBaru, stokBaru);
+            break;
+        case 8:
+            cout << "Nama senjata yang ingin diedit: ";
+            getline(cin, nama);
+            edit(head, nama);
             break;
         case 0:
             cout << "Keluar dari program...\n";
