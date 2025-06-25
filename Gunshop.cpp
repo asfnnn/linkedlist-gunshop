@@ -130,5 +130,62 @@ void clearAll(Weapon *&head)
 int main()
 {
     Weapon *head = nullptr;
+
+        int pilihan;
+    string nama, kategori, harga;
+    int stok;
+
+    do
+    {
+        menu();
+        cin >> pilihan;
+        cin.ignore();
+
+        switch (pilihan)
+        {
+        case 1:
+            cout << "Nama senjata: ";
+            getline(cin, nama);
+            cout << "Kategori senjata (contoh: Pistol/Rifle/Sniper): ";
+            getline(cin, kategori);
+            cout << "Harga: Rp";
+            cin >> harga;
+            cout << "Stok: ";
+            cin >> stok;
+            add(head, nama, kategori, harga, stok);
+            break;
+        case 2:
+            display(head);
+            break;
+        case 3:
+            cout << "Nama senjata yang dicari: ";
+            getline(cin, nama);
+            if (search(head, nama))
+                cout << "Senjata ditemukan!\n";
+            else
+                cout << "Senjata tidak ditemukan.\n";
+            break;
+        case 4:
+            cout << "Nama senjata yang ingin dihapus: ";
+            getline(cin, nama);
+            destroy(head, nama);
+            break;
+        case 5:
+            cout << "Total stok senjata: " << stock(head) << " unit\n";
+            break;
+        case 6:
+            clearAll(head);
+            cout << "Semua senjata berhasil dihapus.\n";
+            break;
+        case 0:
+            cout << "Keluar dari program...\n";
+            break;
+        default:
+            cout << "Pilihan tidak valid.\n";
+        }
+
+    } while (pilihan != 0);
+
+    clearAll(head);
     return 0;
 }
