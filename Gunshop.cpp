@@ -72,6 +72,40 @@ bool search(Weapon *head, string name)
     return false;
 }
 
+void destroy(Weapon *&head, string name)
+{
+    if (!head)
+        return;
+
+    if (head->name == name)
+    {
+        Weapon *temp = head;
+        head = head->next;
+        delete temp;
+        cout << "Senjata \"" << name << "\" berhasil dihapus.\n";
+        return;
+    }
+
+    Weapon *current = head;
+    Weapon *prev = nullptr;
+    while (current && current->name != name)
+    {
+        prev = current;
+        current = current->next;
+    }
+
+    if (current)
+    {
+        prev->next = current->next;
+        delete current;
+        cout << "Senjata \"" << name << "\" berhasil dihapus.\n";
+    }
+    else
+    {
+        cout << "Senjata \"" << name << "\" tidak ditemukan.\n";
+    }
+}
+
 int main()
 {
     Weapon *head = nullptr;
