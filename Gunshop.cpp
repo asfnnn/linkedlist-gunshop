@@ -106,6 +106,27 @@ void destroy(Weapon *&head, string name)
     }
 }
 
+int stock(Weapon *head)
+{
+    int total = 0;
+    while (head)
+    {
+        total += head->stock;
+        head = head->next;
+    }
+    return total;
+}
+
+void clearAll(Weapon *&head)
+{
+    while (head)
+    {
+        Weapon *temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+
 int main()
 {
     Weapon *head = nullptr;
