@@ -61,6 +61,17 @@ void display(Weapon *head)
     }
 }
 
+bool search(Weapon *head, string name)
+{
+    while (head)
+    {
+        if (head->name == name)
+            return true;
+        head = head->next;
+    }
+    return false;
+}
+
 int main()
 {
     Weapon *head = nullptr;
