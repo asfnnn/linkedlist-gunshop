@@ -1,98 +1,81 @@
 <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="Linkedlist Gunshop" />
-
   &#xa0;
-
   <!-- <a href="https://linkedlistgunshop.netlify.app">Demo</a> -->
 </div>
 
 <h1 align="center">Linkedlist Gunshop</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/linkedlist-gunshop?color=56BEB8">
-
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{YOUR_GITHUB_USERNAME}}/linkedlist-gunshop?color=56BEB8">
-
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{YOUR_GITHUB_USERNAME}}/linkedlist-gunshop?color=56BEB8">
-
-  <img alt="License" src="https://img.shields.io/github/license/{{YOUR_GITHUB_USERNAME}}/linkedlist-gunshop?color=56BEB8">
-
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/{{YOUR_GITHUB_USERNAME}}/linkedlist-gunshop?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/{{YOUR_GITHUB_USERNAME}}/linkedlist-gunshop?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/linkedlist-gunshop?color=56BEB8" /> -->
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/asfnnn/linkedlist-gunshop?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/asfnnn/linkedlist-gunshop?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/asfnnn/linkedlist-gunshop?color=56BEB8">
 </p>
 
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Linkedlist Gunshop 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
-
 <p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#dart-deskripsi">Deskripsi</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-fitur">Fitur</a> &#xa0; | &#xa0;
+  <a href="#rocket-teknologi">Teknologi</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
+  <a href="#checkered_flag-menjalankan">Menjalankan</a> &#xa0; | &#xa0;
+  <a href="#heart-anggota">Anggota</a> &#xa0; | &#xa0;
 </p>
 
 <br>
 
-## :dart: About ##
+## :dart: Deskripsi ##
 
-Describe your project
+Repository ini merupakan implementasi struktur data **Linked List (Singly)** menggunakan bahasa pemrograman **C++**, yang dikembangkan untuk memenuhi tugas mata kuliah **Struktur Data**.
 
-## :sparkles: Features ##
+Pada proyek ini, kami membangun sistem inventaris bertema **Gunshop** (*Toko Senjata*), yang memungkinkan pengguna melakukan berbagai operasi **CRUD** (*Create, Read, Update, Delete*) secara dinamis terhadap data senjata.  
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+### 🔍 Data yang dikelola:
+- **Nama Senjata**
+- **Kategori** *(contoh: Pistol, Rifle, Sniper)*
+- **Harga**
+- **Stok**
 
-## :rocket: Technologies ##
+## :sparkles: Fitur ##
 
-The following tools were used in this project:
+:heavy_check_mark: **Tambah senjata** – Menambahkan senjata baru ke dalam list.  
+:heavy_check_mark: **Tampilkan senjata** – Menampilkan list senjata yang sudah ditambahkan.  
+:heavy_check_mark: **Cari senjata** – Mencari senjata berdasarkan nama.  
+:heavy_check_mark: **Hapus senjata** – Menghapus senjata berdasarkan nama.  
+:heavy_check_mark: **Total semua stok** – Menampilkan jumlah total stok seluruh senjata.  
+:heavy_check_mark: **Hapus semua data** – Menghapus semua data senjata dari list.  
+:heavy_check_mark: **Sisipkan senjata** – Menambahkan senjata setelah senjata tertentu di list.  
+:heavy_check_mark: **Edit data senjata** – Mengubah data senjata yang sudah ada.  
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+## :rocket: Teknologi ##
+
+Teknologi/tools yang digunakan dalam proyek ini:
+
+- ![C++](https://img.shields.io/badge/-C++-blue?logo=cplusplus)
+- ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=ffffff)
+- ![VSCode](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff)
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Sebelum menjalankan project ini, pastikan sudah menginstall:
 
-## :checkered_flag: Starting ##
+- [Git](https://git-scm.com)
+- Compiler C++ (g++, MinGW, atau lainnya)
+
+## :checkered_flag: Menjalankan ##
 
 ```bash
-# Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/linkedlist-gunshop
+# Clone project ini
+$ git clone https://github.com/asfnnn/linkedlist-gunshop
 
-# Access
+# Masuk ke folder project
 $ cd linkedlist-gunshop
 
-# Install dependencies
-$ yarn
-
-# Run the project
-$ yarn start
-
-# The server will initialize in the <http://localhost:3000>
+# Compile dan jalankan
+$ g++ Gunshop.cpp -o Gunshop.exe && Gunshop.exe
 ```
 
-## :memo: License ##
+## :heart: Anggota ##
+- <a href="https://github.com/Rajwakun" target="_blank">Muhammad Rajwa Shahifa Quthbi</a><br>
+- <a href="https://github.com/asfnnn" target="_blank">Muhammad As’ad Arifin</a><br>
+- <a href="https://github.com/emowbaik" target="_blank">Decy Alam Santoso</a><br>
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
-
-Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
-
-&#xa0;
-
-<a href="#top">Back to top</a>
